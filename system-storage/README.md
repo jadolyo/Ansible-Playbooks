@@ -8,4 +8,4 @@ This is to create a storage using Ansible Roles which we will install a collecti
 
 Use ansible-galaxy to install the collection inside the collections dir.
 
-ansible-galaxy collection install ./redhat-rhel_system_roles-1.19.3.tar.gz -p collection
+ansible-galaxy collection install ./redhat-rhel_system_roles-1.19.3.tar.gz -p collections
