@@ -1,0 +1,23 @@
+---
+- name: Configuring Repositpries
+  hosts: webservers
+
+  tasks:
+
+    - name: Configure Repo
+      ansible.builtin.yum_repository:
+        name: example-internal
+        description: Example Inc. Internal YUM repo.
+        baseurl: http://materials.example.com/yum/repository
+        gpgcheck: yes
+        file: example
+
+    - name: Repo Key
+      ansible.builtin.rpm_key:
+        key: http://materials.example.com/yum/repository/RPM-GPG-KEY-example
+        state: present
+
+    - name: Install a package
+      ansible.builtin.dnf:
+        name: rhelver
+        state: present

@@ -1,0 +1,18 @@
+---
+- name: Creating users and groups
+  hosts: webservers
+  vars_files:
+    - vars/users_vars.yml
+
+  tasks:
+
+    - name: Create Groups
+      ansible.builtin.group:
+        name: webadmin
+        state: present
+
+    - name: Create user accounts
+      ansible.builtin.user:
+        name: "{{ item['username'] }}"
+        groups: webadmin
+      loop: "{{ users }}"
